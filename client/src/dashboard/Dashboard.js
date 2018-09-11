@@ -8,19 +8,17 @@ import {
   ListItem,
   ListItemText,
   GridList,
-  GridListTile,
-  Paper
+  Card,
 } from '@material-ui/core';
+import { GridContainer } from 'material-ui';
 import { compose, pure } from 'recompose';
 import withConnect from './withConnect';
 
 const topSongs = (songs) => {
-  console.log(songs);
   return songs.map((song, index) => {
-    console.log(song.artists);
     const artists = song.artists.map((artist) => artist.name).join(', ');
     return (
-      <ListItem style={style.listItems} key={song.uri}>
+      <ListItem divider={true} style={style.listItems} key={song.uri}>
         <ListItemText inset primary={index + 1} />
         <ListItemText inset primary={song.name} secondary={artists} />
       </ListItem>
@@ -30,10 +28,15 @@ const topSongs = (songs) => {
 
 const style = {
   topSongsGrid: {
+    maxWidth: '80%',
     flexGrow: 1
   },
   listItems: {
-    padding: 10,
+    alignContent: 'center',
+    alightItems: 'center',
+    alignText: 'left',
+    textAlign: 'left',
+    height: 50
   }
 };
 
@@ -65,16 +68,16 @@ class Dashboard extends Component {
     );
     return (
       <div className="Dashboard">
-        <Grid style={style.topSongsGrid}>
+        <GridContainer style={style.topSongsGrid}>
           {content}
-          <Paper>
+          <Card>
             {loggedIn && (
               <Button color="primary" variant="raised" onClick={getMyTopSongs}>
                 Get My Top Songs
               </Button>
             )}
             <GridList>{isMyTopSongs && topSongs(myTopSongs)}</GridList>
-          </Paper>
+          </Card>
 
           {/* <Paper>
             {loggedIn && (
@@ -84,7 +87,7 @@ class Dashboard extends Component {
             )}
             <GridList>{isMyTopSongs && topSongs(myTopSongs)}</GridList>F
           </Paper> */}
-        </Grid>
+        </GridContainer>
       </div>
     );
   }
