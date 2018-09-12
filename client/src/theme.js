@@ -22,7 +22,7 @@ const theme = createMuiTheme({
       'Helvetica',
       'Arial',
       'sans-serif'
-    ].join(',')
+    ].join(','),
   },
   overrides: {
     MuiListItem: {

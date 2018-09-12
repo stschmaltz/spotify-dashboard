@@ -1,6 +1,11 @@
 body {
   margin: 0;
   padding: 0;
+  background-color: #eeeeee;
   font-family: sans-serif;
   text-align: center;
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  justify-content: center;
 }

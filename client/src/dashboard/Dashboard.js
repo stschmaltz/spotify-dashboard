@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import qs from 'query-string';
+import React, { Component } from "react";
+import qs from "query-string";
 // import SpotifyWebApi from 'spotify-web-api-js';
 import {
   Grid,
@@ -8,37 +8,13 @@ import {
   ListItem,
   ListItemText,
   GridList,
-  Card,
-} from '@material-ui/core';
-import { GridContainer } from 'material-ui';
-import { compose, pure } from 'recompose';
-import withConnect from './withConnect';
-
-const topSongs = (songs) => {
-  return songs.map((song, index) => {
-    const artists = song.artists.map((artist) => artist.name).join(', ');
-    return (
-      <ListItem divider={true} style={style.listItems} key={song.uri}>
-        <ListItemText inset primary={index + 1} />
-        <ListItemText inset primary={song.name} secondary={artists} />
-      </ListItem>
-    );
-  });
-};
-
-const style = {
-  topSongsGrid: {
-    maxWidth: '80%',
-    flexGrow: 1
-  },
-  listItems: {
-    alignContent: 'center',
-    alightItems: 'center',
-    alignText: 'left',
-    textAlign: 'left',
-    height: 50
-  }
-};
+  Card
+} from "@material-ui/core";
+// import { GridContainer } from "material-ui";
+import { compose, pure } from "recompose";
+import withConnect from "./withConnect";
+import ResultsList from "../components/ResultsList";
+import { formatTopSongs } from "../util/songDataFormatter";
 
 class Dashboard extends Component {
   constructor(props) {
@@ -57,37 +33,59 @@ class Dashboard extends Component {
 
   render() {
     const { loggedIn } = this.state;
-    const { getMyTopSongs, myTopSongs } = this.props;
+    const {
+      getMyTopSongs,
+      myTopSongsLong,
+      myTopSongsMed,
+      myTopSongsShort
+    } = this.props;
 
-    const isMyTopSongs = myTopSongs && myTopSongs.length > 0;
+    const isMyTopSongs = myTopSongsLong && myTopSongsLong.length > 0;
 
-    const content = loggedIn ? (
-      <Typography> You're logged in fam</Typography>
-    ) : (
-      <a href="http://localhost:8888">Log Into Spotify on the Server</a>
-    );
     return (
       <div className="Dashboard">
-        <GridContainer style={style.topSongsGrid}>
-          {content}
-          <Card>
-            {loggedIn && (
-              <Button color="primary" variant="raised" onClick={getMyTopSongs}>
-                Get My Top Songs
-              </Button>
-            )}
-            <GridList>{isMyTopSongs && topSongs(myTopSongs)}</GridList>
-          </Card>
-
-          {/* <Paper>
-            {loggedIn && (
-              <Button color="primary" variant="raised" onClick={getMyTopSongs}>
-                Get My Top Artists
-              </Button>
-            )}
-            <GridList>{isMyTopSongs && topSongs(myTopSongs)}</GridList>F
-          </Paper> */}
-        </GridContainer>
+        <Grid>
+          <Typography
+            variant="display3"
+            align="center"
+            color="textPrimary"
+            gutterBottom
+          >
+            Welcome to Your Spotify Dashboard
+          </Typography>
+          {!loggedIn && (
+            <a href="http://localhost:8888">Log Into Spotify on the Server</a>
+          )}
+          {loggedIn && (
+            <Button color="primary" variant="raised" onClick={getMyTopSongs}>
+              Get My Top Songs
+            </Button>
+          )}
+          {isMyTopSongs && (
+            <div>
+              <ResultsList
+                headerColor={"Yellow"}
+                listTitle={"Your Top Songs (All Time)"}
+                listData={myTopSongsLong}
+                listDataFunction={formatTopSongs}
+                listHeaders={["Rank", "Title", "Artist", "Album"]}
+              />
+              <ResultsList
+                headerColor={"Green"}
+                listTitle={"Your Top Songs (Last Six Months)"}
+                listData={myTopSongsMed}
+                listDataFunction={formatTopSongs}
+                listHeaders={["Rank", "Title", "Artist", "Album"]}
+              />
+              <ResultsList
+                listTitle={"Your Top Songs (Last Four Weeks)"}
+                listData={myTopSongsShort}
+                listDataFunction={formatTopSongs}
+                listHeaders={["Rank", "Title", "Artist", "Album"]}
+              />
+            </div>
+          )}
+        </Grid>
       </div>
     );
   }

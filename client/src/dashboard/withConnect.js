@@ -1,5 +1,5 @@
 import { doSaveAccessToken, selectAccessToken } from '../auth/duck';
-import { doGetMyTopSongsRequest, selectMyTopSongs } from './duck';
+import { doGetMyTopSongsRequest, selectMyTopSongsLong, selectMyTopSongsMed, selectMyTopSongsShort } from './duck';
 import { createStructuredSelector } from 'reselect';
 import { connect } from 'react-redux';
 
@@ -8,13 +8,17 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(doSaveAccessToken(accessToken));
   },
   getMyTopSongs: () => {
-    dispatch(doGetMyTopSongsRequest());
+    dispatch(doGetMyTopSongsRequest('long_term'));
+    dispatch(doGetMyTopSongsRequest('medium_term'));
+    dispatch(doGetMyTopSongsRequest('short_term'));
   }
 });
 
 const mapStateToProps = createStructuredSelector({
   accessToken: selectAccessToken,
-  myTopSongs: selectMyTopSongs
+  myTopSongsLong: selectMyTopSongsLong,
+  myTopSongsMed: selectMyTopSongsMed,
+  myTopSongsShort: selectMyTopSongsShort
 });
 
 const withConnect = connect(

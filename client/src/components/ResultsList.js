@@ -1,40 +1,43 @@
 import React, { Fragment } from "react";
 import PropTypes from "prop-types";
-import { GridItem, Card, CardHeader, CardBody, Table } from 'material-ui';
-import { style } from './style';
+import {
+  GridListTile,
+  Card,
+  CardHeader,
+  TableHead,
+  Table,
+  TableCell,
+  TableRow,
+  TableBody
+} from "@material-ui/core";
+import { style } from "./style";
+import { withStyles } from "@material-ui/core/styles";
 
-const ResultsList = ({ listData, listHeaders, headerColour='warning'}) => {
-  return (
+const ResultsList = ({ listTitle, listData, listDataFunction, listHeaders, classes, headerColor='Red' }) => {
+    const headerCells = listHeaders.map((header) => <TableCell key={header}>{header}</TableCell>)
+    const cardHeaderStyle = `cardHeader${headerColor}`
+
+    return (
     <Fragment>
-      <GridItem xs={12} sm={12} md={6}>
-        <Card>
-          <CardHeader color={headerColour}>
-            <h4 className={style.cardTitleWhite}>Top Listened To Songs</h4>
-            <p className={style.cardCategoryWhite}>
-              Time-Range: Maximum
-            </p>
-          </CardHeader>
-          <CardBody>
-            <Table
-              tableHeaderColor={headerColour}
-              tableHead={listHeaders}
-              tableData={listData}
-            />
-          </CardBody>
-        </Card>
-      </GridItem>
+      <Card>
+        <CardHeader
+          className={classes[cardHeaderStyle]}
+          classes={{ title: classes.title }}
+          title={listTitle}
+        />
+        <Table>
+          <TableHead>
+            <TableRow>
+                {headerCells}
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {listDataFunction(listData)}
+          </TableBody>
+        </Table>
+      </Card>
     </Fragment>
   );
 };
-// "warning"
 
-// ["ID", "Name", "Salary", "Country"]
-
-// ["1", "Dakota Rice", "$36,738", "Niger"],
-// ["2", "Minerva Hooper", "$23,789", "Curaçao"],
-// ["3", "Sage Rodriguez", "$56,142", "Netherlands"],
-// ["4", "Philip Chaney", "$38,735", "Korea, South"]
-
-
-
-export default ResultsList;
+export default withStyles(style)(ResultsList);
