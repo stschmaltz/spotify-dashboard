@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import qs from 'query-string';
-import { Grid, Typography } from '@material-ui/core';
+import { Grid, withStyles } from '@material-ui/core';
 import { compose, pure } from 'recompose';
 import withConnect from './withConnect';
-import DashboardMainContent from '../dashboard-content';
+import DashboardMainContent from '../dashboard-main-content';
+import DashboardHeader from '../dashboard-header';
+import { style } from './style';
 
 class Dashboard extends Component {
   constructor(props) {
@@ -23,23 +25,17 @@ class Dashboard extends Component {
 
   render() {
     const { loggedIn } = this.state;
+    const { classes } = this.props;
 
     return (
       <div className="Dashboard">
-        <Typography
-          variant="display3"
-          align="center"
-          color="textPrimary"
-          gutterBottom
-        >
-          Welcome to Your Spotify Dashboard
-        </Typography>
+        <DashboardHeader />
         {!loggedIn && (
           <a href="http://localhost:8888">Log Into Spotify on the Server</a>
         )}
         {loggedIn && (
           <div>
-            <Grid>
+            <Grid className={classes.root}>
               <DashboardMainContent />
             </Grid>
           </div>
@@ -51,5 +47,6 @@ class Dashboard extends Component {
 
 export default compose(
   pure,
+  withStyles(style),
   withConnect
 )(Dashboard);

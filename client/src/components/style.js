@@ -17,6 +17,9 @@ const infoCardHeader = {
 };
 
 export const style = {
+  root:{
+    padding: 20
+  },
   cardHeaderRed: {
     padding: '0.75rem 1.25rem',
     marginBottom: '0',

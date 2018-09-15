@@ -1,5 +1,4 @@
-import React, { Fragment } from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
 import {
   Card,
   CardHeader,
@@ -26,8 +25,8 @@ const ResultsList = ({
   const cardHeaderStyle = `cardHeader${headerColor}`;
 
   return (
-    <Fragment>
-      <Card className={classes.cardStyle}>
+    <div className={classes.root}>
+      <Card className={classes.card}>
         <CardHeader
           className={classes[cardHeaderStyle]}
           classes={{ title: classes.title }}
@@ -40,7 +39,7 @@ const ResultsList = ({
           <TableBody>{listDataFunction(listData)}</TableBody>
         </Table>
       </Card>
-    </Fragment>
+    </div>
   );
 };
 

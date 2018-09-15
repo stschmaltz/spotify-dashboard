@@ -1,10 +1,9 @@
-import tsSaga from './top-songs/saga';
-import authSaga from './auth/saga';
-
-export const topSongsSaga = tsSaga;
-export const authorizationSaga = authSaga;
+import topSongsSaga from './top-songs/saga';
+import authorizationSaga from './auth/saga';
+import userProfileSaga from './user-profile/saga';
 
 export default {
-  topSongsSaga: tsSaga,
-  authorizationSaga: authSaga
+  topSongsSaga,
+  authorizationSaga,
+  userProfileSaga
 };

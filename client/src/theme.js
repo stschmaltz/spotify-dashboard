@@ -25,34 +25,15 @@ const theme = createMuiTheme({
     ].join(',')
   },
   overrides: {
-    MuiListItem: {
-      textAlign: 'left',
-      paddingTop: 0,
-      paddingBottom: 0,
-      margin: 'auto'
-    },
-    MuiListItemText: {
-      primary: {
-        fontWeight: 'bold',
-        fontSize: '10pt'
-      },
-      secondary: {
-        fontSize: '13pt'
-      }
-    },
-    MuiDivider: {
+    MuiTableCell: {
       root: {
-        backgroundColor: 'rgba(0, 0, 0, 0.05)'
+        padding: '4px 36px 4px 24px'
       },
-      inset: {
-        marginLeft: 24,
-        marginRight: 24
-      }
-    },
-    MuiPaper: {
-      elevation8: {
-        boxShadow:
-          '0px 5px 5px -3px rgba(0, 0, 0, 0.06), 0px 8px 10px 1px rgba(0, 0, 0, 0.04), 0px 3px 14px 2px rgba(0, 0, 0, 0.03)'
+      body: {
+        fontSize: 16
+      },
+      header: {
+        fontSize: 16
       }
     }
   }

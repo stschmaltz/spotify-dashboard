@@ -3,20 +3,19 @@ import { createSelector } from 'reselect';
 
 export const SAVE_ACCESS_TOKEN = 'spotify-dashboard/auth/SAVE_ACCESS_TOKEN';
 
-export const doSaveAccessToken = (accessToken) => ({
+export const doSaveAccessToken = accessToken => ({
   type: SAVE_ACCESS_TOKEN,
   accessToken
 });
 
-export const selectAuth = (state) => state.get('auth');
+export const selectAuth = state => state.get('auth');
 
-export const selectAccessToken = createSelector(
-  selectAuth,
-  (auth) => auth.get('accessToken')
+export const selectAccessToken = createSelector(selectAuth, auth =>
+  auth.get('accessToken')
 );
-  
+
 const initialState = fromJS({
-  accessToken: null,
+  accessToken: null
 });
 
 const authReducer = (state = initialState, action) => {
@@ -27,6 +26,5 @@ const authReducer = (state = initialState, action) => {
       return state;
   }
 };
-  
+
 export default authReducer;
-  

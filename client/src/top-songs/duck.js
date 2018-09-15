@@ -1,15 +1,15 @@
 import { createSelector } from 'reselect';
 import { fromJS } from 'immutable';
 
-export const GET_MY_TOP_SONGS_ERROR = 'ti/Auth/GET_MY_TOP_SONGS_ERROR';
-export const GET_MY_TOP_SONGS_REQUEST = 'ti/Auth/GET_MY_TOP_SONGS_REQUEST';
+export const GET_MY_TOP_SONGS_REQUEST = 'top-songs/GET_MY_TOP_SONGS_REQUEST';
+export const GET_MY_TOP_SONGS_ERROR = 'top-songs/GET_MY_TOP_SONGS_ERROR';
 
 export const GET_MY_TOP_SONGS_SUCCESS_LONG =
-  'ti/Auth/GET_MY_TOP_SONGS_SUCCESS_LONG';
+  'top-songs/GET_MY_TOP_SONGS_SUCCESS_LONG';
 export const GET_MY_TOP_SONGS_SUCCESS_SHORT =
-  'ti/Auth/GET_MY_TOP_SONGS_SUCCESS_SHORT';
+  'top-songs/GET_MY_TOP_SONGS_SUCCESS_SHORT';
 export const GET_MY_TOP_SONGS_SUCCESS_MEDIUM =
-  'ti/Auth/GET_MY_TOP_SONGS_SUCCESS_MEDIUM';
+  'top-songs/GET_MY_TOP_SONGS_SUCCESS_MEDIUM';
 
 export const doGetMyTopSongsRequest = timeRange => ({
   type: GET_MY_TOP_SONGS_REQUEST,
