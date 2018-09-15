@@ -50,7 +50,7 @@ rules:
   - 3
   max-nested-callbacks:
   - error
-  - 2
+  - 3
   complexity:
   - off
   - 6

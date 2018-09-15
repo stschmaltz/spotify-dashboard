@@ -1,15 +1,15 @@
-import { createSelector } from "reselect";
-import { fromJS } from "immutable";
+import { createSelector } from 'reselect';
+import { fromJS } from 'immutable';
 
-export const GET_MY_TOP_SONGS_ERROR = "ti/Auth/GET_MY_TOP_SONGS_ERROR";
-export const GET_MY_TOP_SONGS_REQUEST = "ti/Auth/GET_MY_TOP_SONGS_REQUEST";
+export const GET_MY_TOP_SONGS_ERROR = 'ti/Auth/GET_MY_TOP_SONGS_ERROR';
+export const GET_MY_TOP_SONGS_REQUEST = 'ti/Auth/GET_MY_TOP_SONGS_REQUEST';
 
 export const GET_MY_TOP_SONGS_SUCCESS_LONG =
-  "ti/Auth/GET_MY_TOP_SONGS_SUCCESS_LONG";
+  'ti/Auth/GET_MY_TOP_SONGS_SUCCESS_LONG';
 export const GET_MY_TOP_SONGS_SUCCESS_SHORT =
-  "ti/Auth/GET_MY_TOP_SONGS_SUCCESS_SHORT";
+  'ti/Auth/GET_MY_TOP_SONGS_SUCCESS_SHORT';
 export const GET_MY_TOP_SONGS_SUCCESS_MEDIUM =
-  "ti/Auth/GET_MY_TOP_SONGS_SUCCESS_MEDIUM";
+  'ti/Auth/GET_MY_TOP_SONGS_SUCCESS_MEDIUM';
 
 export const doGetMyTopSongsRequest = timeRange => ({
   type: GET_MY_TOP_SONGS_REQUEST,
@@ -20,27 +20,29 @@ export const doGetMyTopSongsError = () => ({
 });
 export const doGetMyTopSongsSuccess = (myTopSongs, timeRange) => {
   const type =
-    timeRange === "long_term"
+    timeRange === 'long_term'
       ? GET_MY_TOP_SONGS_SUCCESS_LONG
-      : timeRange === "medium_term"
+      : timeRange === 'medium_term'
         ? GET_MY_TOP_SONGS_SUCCESS_MEDIUM
         : GET_MY_TOP_SONGS_SUCCESS_SHORT;
+
   return {
-    type: type,
+    type,
     myTopSongs
   };
 };
 
-export const selectDashboard = state => state.get("dashboard");
+export const selectDashboard = state => state.get('dashboard');
 
 export const selectMyTopSongsLong = createSelector(selectDashboard, dashboard =>
-  dashboard.get("myTopSongsLong")
+  dashboard.get('myTopSongsLong')
 );
 export const selectMyTopSongsMed = createSelector(selectDashboard, dashboard =>
-  dashboard.get("myTopSongsMed")
+  dashboard.get('myTopSongsMed')
 );
-export const selectMyTopSongsShort = createSelector(selectDashboard, dashboard =>
-  dashboard.get("myTopSongsShort")
+export const selectMyTopSongsShort = createSelector(
+  selectDashboard,
+  dashboard => dashboard.get('myTopSongsShort')
 );
 
 const initialState = fromJS({
@@ -53,13 +55,15 @@ const initialState = fromJS({
 const dashboardReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_MY_TOP_SONGS_SUCCESS_LONG:
-      return state.set("myTopSongsLong", action.myTopSongs).set("error", false);
+      return state.set('myTopSongsLong', action.myTopSongs).set('error', false);
     case GET_MY_TOP_SONGS_SUCCESS_MEDIUM:
-      return state.set("myTopSongsMed", action.myTopSongs).set("error", false);
+      return state.set('myTopSongsMed', action.myTopSongs).set('error', false);
     case GET_MY_TOP_SONGS_SUCCESS_SHORT:
-      return state.set("myTopSongsShort", action.myTopSongs).set("error", false);
+      return state
+        .set('myTopSongsShort', action.myTopSongs)
+        .set('error', false);
     case GET_MY_TOP_SONGS_ERROR:
-      return state.set("error", true);
+      return state.set('error', true);
     default:
       return state;
   }

@@ -6,14 +6,14 @@ export const history = createBrowserHistory();
 export default routerMiddleware(history);
 
 const initialState = fromJS({
-  location: null,
+  location: null
 });
 
 export const reducer = (state = initialState, action) => {
   switch (action.type) {
     case LOCATION_CHANGE:
       return state.merge({
-        location: action.payload,
+        location: action.payload
       });
     default:
       return state;
