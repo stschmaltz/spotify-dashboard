@@ -25,7 +25,6 @@ class Dashboard extends Component {
 
   render() {
     const { loggedIn } = this.state;
-    const { classes } = this.props;
 
     return (
       <div className="Dashboard">
@@ -35,7 +34,7 @@ class Dashboard extends Component {
         )}
         {loggedIn && (
           <div>
-            <Grid className={classes.root}>
+            <Grid>
               <DashboardMainContent />
             </Grid>
           </div>

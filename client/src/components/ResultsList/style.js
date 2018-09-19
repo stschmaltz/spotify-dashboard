@@ -27,7 +27,8 @@ const roseCardHeader = {
 
 export const style = {
   root: {
-    padding: 20
+    padding: 20,
+    // maxWidth: '80%'
   },
   cardHeaderRed: {
     padding: '0.75rem 1.25rem',

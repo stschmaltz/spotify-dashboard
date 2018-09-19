@@ -29,6 +29,7 @@ const ResultsGrid = ({
       <Card className={classes.card}>
         <CardHeader
           className={classes[cardHeaderStyle]}
+          style={{ marginBottom: '1em' }}
           classes={{ title: classes.title }}
           title={listTitle}
         />
