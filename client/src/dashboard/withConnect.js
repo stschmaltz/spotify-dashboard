@@ -6,7 +6,7 @@ import {
   selectMyTopSongsLong,
   selectMyTopSongsMed,
   selectMyTopSongsShort
-} from '../top-songs/duck';
+} from '../user-favourites/duck';
 
 const mapDispatchToProps = dispatch => ({
   saveAccessToken: accessToken => {

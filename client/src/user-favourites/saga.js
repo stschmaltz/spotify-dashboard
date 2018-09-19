@@ -1,6 +1,11 @@
 import { put, takeEvery, select } from 'redux-saga/effects';
 import SpotifyWebApi from 'spotify-web-api-js';
-import { GET_MY_TOP_SONGS_REQUEST, doGetMyTopSongsSuccess } from './duck';
+import {
+  GET_MY_TOP_SONGS_REQUEST,
+  GET_MY_TOP_ARTISTS_REQUEST,
+  doGetMyTopSongsSuccess,
+  doGetMyTopArtistsSuccess
+} from './duck';
 import { selectAccessToken } from '../auth/duck';
 
 export function* handleGetMyTopSongsRequest(action) {
@@ -27,6 +32,34 @@ const mapTopSongs = topSongs => {
 const joinArtistsToString = artists =>
   artists.map(artist => artist.name).join(', ');
 
+export function* handleGetMyTopArtistsRequest(action) {
+  const accessToken = yield select(selectAccessToken);
+
+  const spotifyApi = new SpotifyWebApi();
+
+  yield spotifyApi.setAccessToken(accessToken);
+
+  const res = yield spotifyApi.getMyTopArtists({ time_range: 'long_term' });
+
+  console.log(res);
+  const topArtists = mapTopArtists(res.items);
+
+  // TODO: add map and genre join
+  console.log(topArtists);
+  yield put(doGetMyTopArtistsSuccess(topArtists, action.timeRange));
+}
+const mapTopArtists = topArtists => {
+  const artists = [...topArtists]; // .slice(0, 10);
+
+  return artists.map(artist => ({
+    name: artist.name,
+    image: artist.images[0].url
+    // image: artist.images.
+  }));
+};
+const joinGenresToString = genres => genres.join(', ');
+
 export default function* topSongsSaga() {
   yield takeEvery(GET_MY_TOP_SONGS_REQUEST, handleGetMyTopSongsRequest);
+  yield takeEvery(GET_MY_TOP_ARTISTS_REQUEST, handleGetMyTopArtistsRequest);
 }

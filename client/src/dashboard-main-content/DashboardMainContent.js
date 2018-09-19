@@ -1,20 +1,29 @@
 import React, { Component, Fragment } from 'react';
 import { Grid, GridList, withStyles } from '@material-ui/core';
 import { compose, pure } from 'recompose';
-import ResultsList from '../components/ResultsList';
+import ResultsList from '../components/ResultsList/ResultsList';
 import withConnect from './withConnect';
-import { formatTopSongs } from '../top-songs/song-data-formatter';
+import { formatTopSongs } from '../user-favourites/song-data-formatter';
+import { formatTopArtists } from '../user-favourites/artist-data-formatter';
 import { style } from './style';
+import ResultsGrid from '../components/ResultsGrid.js/ResultsGrid';
 
 class DashboardContent extends Component {
   componentDidMount() {
     const { getMyTopSongs } = this.props;
+    const { getMyTopArtists } = this.props;
 
     getMyTopSongs();
+    getMyTopArtists();
   }
 
   render() {
-    const { myTopSongsLong, myTopSongsMed, myTopSongsShort } = this.props;
+    const {
+      myTopSongsLong,
+      myTopSongsMed,
+      myTopSongsShort,
+      myTopArtists
+    } = this.props;
     const { classes } = this.props;
     // const isMyTopSongs = myTopSongsLong && myTopSongsLong.length > 0;
 
@@ -24,23 +33,30 @@ class DashboardContent extends Component {
           <GridList className={classes.list}>
             <ResultsList
               headerColor="Yellow"
-              listTitle="Your Top Songs (All Time)"
+              listTitle="Top Songs (All Time)"
               listData={myTopSongsLong}
               listDataFunction={formatTopSongs}
               listHeaders={['Rank', 'Title', 'Artist', 'Album']}
             />
             <ResultsList
               headerColor="Green"
-              listTitle="Your Top Songs (Last Six Months)"
+              listTitle="Top Songs (Last Six Months)"
               listData={myTopSongsMed}
               listDataFunction={formatTopSongs}
               listHeaders={['Rank', 'Title', 'Artist', 'Album']}
             />
             <ResultsList
-              listTitle="Your Top Songs (Last Four Weeks)"
+              listTitle="Top Songs (Last Four Weeks)"
               listData={myTopSongsShort}
               listDataFunction={formatTopSongs}
               listHeaders={['Rank', 'Title', 'Artist', 'Album']}
+            />
+            <ResultsGrid
+              headerColor="Blue"
+              listTitle="Top Artists"
+              listData={myTopArtists}
+              listDataFunction={formatTopArtists}
+              listHeaders={['Rank', 'Image', 'Name']}
             />
           </GridList>
         </Grid>

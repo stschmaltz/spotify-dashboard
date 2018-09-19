@@ -3,15 +3,15 @@ import {
   Card,
   CardHeader,
   TableHead,
-  Table,
-  TableCell,
-  TableRow,
+  GridList,
+  GridListTileBar,
+  GridListTile,
   TableBody
 } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import { style } from './style';
 
-const ResultsList = ({
+const ResultsGrid = ({
   listTitle,
   listData,
   listDataFunction,
@@ -20,7 +20,7 @@ const ResultsList = ({
   headerColor = 'Red'
 }) => {
   const headerCells = listHeaders.map(header => (
-    <TableCell key={header}>{header}</TableCell>
+    <GridListTileBar key={header}>{header}</GridListTileBar>
   ));
   const cardHeaderStyle = `cardHeader${headerColor}`;
 
@@ -32,15 +32,10 @@ const ResultsList = ({
           classes={{ title: classes.title }}
           title={listTitle}
         />
-        <Table>
-          <TableHead>
-            <TableRow>{headerCells}</TableRow>
-          </TableHead>
-          <TableBody>{listDataFunction(listData)}</TableBody>
-        </Table>
+        <GridList cellHeight={180}>{listDataFunction(listData)}</GridList>
       </Card>
     </div>
   );
 };
 
-export default withStyles(style)(ResultsList);
+export default withStyles(style)(ResultsGrid);
