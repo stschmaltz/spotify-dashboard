@@ -6,6 +6,7 @@ import withConnect from './withConnect';
 import DashboardMainContent from '../dashboard-main-content';
 import DashboardHeader from '../dashboard-header';
 import { style } from './style';
+import DashboardSideBar from '../dashboard-side-bar/DashboardSideBar';
 
 class Dashboard extends Component {
   constructor(props) {
@@ -28,6 +29,7 @@ class Dashboard extends Component {
 
     return (
       <div className="Dashboard">
+        {/* <DashboardSideBar /> */}
         <DashboardHeader />
         {!loggedIn && (
           <a href="http://localhost:8888">Log Into Spotify on the Server</a>

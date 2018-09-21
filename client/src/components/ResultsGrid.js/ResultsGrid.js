@@ -1,13 +1,5 @@
 import React from 'react';
-import {
-  Card,
-  CardHeader,
-  TableHead,
-  GridList,
-  GridListTileBar,
-  GridListTile,
-  TableBody
-} from '@material-ui/core';
+import { Card, CardHeader, GridList } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import { style } from './style';
 
@@ -15,13 +7,9 @@ const ResultsGrid = ({
   listTitle,
   listData,
   listDataFunction,
-  listHeaders,
   classes,
   headerColor = 'Red'
 }) => {
-  const headerCells = listHeaders.map(header => (
-    <GridListTileBar key={header}>{header}</GridListTileBar>
-  ));
   const cardHeaderStyle = `cardHeader${headerColor}`;
 
   return (

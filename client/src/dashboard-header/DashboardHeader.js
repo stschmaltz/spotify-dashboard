@@ -20,9 +20,6 @@ const DashboardHeader = ({ username, classes }) => {
   's Dashboard`
     : 'Spotify Dashboard';
 
-  console.log(username);
-  console.log(firstName);
-
   return (
     <div className={classes.header}>
       <Typography

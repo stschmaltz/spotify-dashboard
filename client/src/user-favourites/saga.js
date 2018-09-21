@@ -40,12 +40,8 @@ export function* handleGetMyTopArtistsRequest(action) {
   yield spotifyApi.setAccessToken(accessToken);
 
   const res = yield spotifyApi.getMyTopArtists({ time_range: 'long_term' });
-
-  console.log(res);
   const topArtists = mapTopArtists(res.items);
 
-  // TODO: add map and genre join
-  console.log(topArtists);
   yield put(doGetMyTopArtistsSuccess(topArtists, action.timeRange));
 }
 const mapTopArtists = topArtists => {
@@ -54,10 +50,8 @@ const mapTopArtists = topArtists => {
   return artists.map(artist => ({
     name: artist.name,
     image: artist.images[0].url
-    // image: artist.images.
   }));
 };
-const joinGenresToString = genres => genres.join(', ');
 
 export default function* topSongsSaga() {
   yield takeEvery(GET_MY_TOP_SONGS_REQUEST, handleGetMyTopSongsRequest);

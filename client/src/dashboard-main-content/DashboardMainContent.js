@@ -46,6 +46,7 @@ class DashboardContent extends Component {
               listHeaders={['Rank', 'Title', 'Artist', 'Album']}
             />
             <ResultsList
+              headerColor="Red"
               listTitle="Top Songs (Last Four Weeks)"
               listData={myTopSongsShort}
               listDataFunction={formatTopSongs}
