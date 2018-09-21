@@ -29,18 +29,26 @@ class Dashboard extends Component {
 
     return (
       <div className="Dashboard">
-        {/* <DashboardSideBar /> */}
-        <DashboardHeader />
-        {!loggedIn && (
-          <a href="http://localhost:8888">Log Into Spotify on the Server</a>
-        )}
-        {loggedIn && (
-          <div>
-            <Grid>
-              <DashboardMainContent />
-            </Grid>
-          </div>
-        )}
+        <DashboardSideBar />
+        <div
+          style={{
+            position: 'relative',
+            float: 'right',
+            width: '80%'
+          }}
+        >
+          <DashboardHeader />
+          {!loggedIn && (
+            <a href="http://localhost:8888">Log Into Spotify on the Server</a>
+          )}
+          {loggedIn && (
+            <div>
+              <Grid>
+                <DashboardMainContent />
+              </Grid>
+            </div>
+          )}
+        </div>
       </div>
     );
   }

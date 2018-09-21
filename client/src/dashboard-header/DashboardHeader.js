@@ -13,17 +13,17 @@ const withGetUserProfile = lifecycle({
   }
 });
 
-const DashboardHeader = ({ username, classes }) => {
-  const firstName = username ? username.split(' ')[0] : null;
-  const headerTitle = firstName
-    ? `${firstName}
-  's Dashboard`
-    : 'Spotify Dashboard';
+const DashboardHeader = ({ /*username,*/ classes }) => {
+  // const firstName = username ? username.split(' ')[0] : null;
+  // const headerTitle = firstName
+  //   ? `${firstName}
+  // 's Dashboard`:
+  const headerTitle = 'Spotify Dashboard';
 
   return (
     <div className={classes.header}>
       <Typography
-        variant="display4"
+        className={classes.header}
         align="left"
         color="textPrimary"
         gutterBottom
