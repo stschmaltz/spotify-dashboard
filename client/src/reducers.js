@@ -10,7 +10,7 @@ const reducers = combineReducers({
   router: routerReducer,
   auth: authReducer,
   userFavourites: userFavouritesReducer,
-  userProfile: userProfileReducer
+  userProfile: userProfileReducer,
 });
 
 export default reducers;

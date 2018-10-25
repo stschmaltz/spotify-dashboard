@@ -8,7 +8,7 @@ const ResultsGrid = ({
   listData,
   listDataFunction,
   classes,
-  headerColor = 'Red'
+  headerColor = 'Red',
 }) => {
   const cardHeaderStyle = `cardHeader${headerColor}`;
 
@@ -21,7 +21,9 @@ const ResultsGrid = ({
           classes={{ title: classes.title }}
           title={listTitle}
         />
-        <GridList cellHeight={180}>{listDataFunction(listData)}</GridList>
+        <GridList className={classes.list}>
+          {listDataFunction(listData)}
+        </GridList>
       </Card>
     </div>
   );

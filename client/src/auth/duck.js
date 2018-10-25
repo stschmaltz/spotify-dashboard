@@ -5,17 +5,17 @@ export const SAVE_ACCESS_TOKEN = 'spotify-dashboard/auth/SAVE_ACCESS_TOKEN';
 
 export const doSaveAccessToken = accessToken => ({
   type: SAVE_ACCESS_TOKEN,
-  accessToken
+  accessToken,
 });
 
 export const selectAuth = state => state.get('auth');
 
 export const selectAccessToken = createSelector(selectAuth, auth =>
-  auth.get('accessToken')
+  auth.get('accessToken'),
 );
 
 const initialState = fromJS({
-  accessToken: null
+  accessToken: null,
 });
 
 const authReducer = (state = initialState, action) => {

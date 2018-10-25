@@ -10,10 +10,10 @@ const withGetUserProfile = lifecycle({
     const { getUserProfile } = this.props;
 
     getUserProfile();
-  }
+  },
 });
 
-const DashboardHeader = ({ /*username,*/ classes }) => {
+const DashboardHeader = ({ /* username, */ classes }) => {
   // const firstName = username ? username.split(' ')[0] : null;
   // const headerTitle = firstName
   //   ? `${firstName}
@@ -38,5 +38,5 @@ export default compose(
   pure,
   withStyles(style),
   withConnect,
-  withGetUserProfile
+  withGetUserProfile,
 )(DashboardHeader);

@@ -1,10 +1,10 @@
 export const style = {
-  root: {
-  },
+  root: {},
   list: {
     display: 'flex',
     flexWrap: 'wrap',
     justifyContent: 'space-around',
-    minWidth: '100%'
-  }
+    alignItems: 'center',
+    alignContent: 'space-between',
+  },
 };

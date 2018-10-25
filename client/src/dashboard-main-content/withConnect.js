@@ -7,7 +7,7 @@ import {
   selectMyTopSongsLong,
   selectMyTopSongsMed,
   selectMyTopSongsShort,
-  selectMyTopArtists
+  selectMyTopArtists,
 } from '../user-favourites/duck';
 
 const mapDispatchToProps = dispatch => ({
@@ -21,7 +21,7 @@ const mapDispatchToProps = dispatch => ({
   },
   getMyTopArtists: () => {
     dispatch(doGetMyTopArtistsRequest());
-  }
+  },
 });
 
 const mapStateToProps = createStructuredSelector({
@@ -29,12 +29,12 @@ const mapStateToProps = createStructuredSelector({
   myTopSongsLong: selectMyTopSongsLong,
   myTopSongsMed: selectMyTopSongsMed,
   myTopSongsShort: selectMyTopSongsShort,
-  myTopArtists: selectMyTopArtists
+  myTopArtists: selectMyTopArtists,
 });
 
 const withConnect = connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 );
 
 export default withConnect;

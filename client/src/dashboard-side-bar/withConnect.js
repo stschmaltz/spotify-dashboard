@@ -5,12 +5,12 @@ import { selectCurrentUser } from '../user-profile/duck';
 const mapDispatchToProps = dispatch => ({});
 
 const mapStateToProps = createStructuredSelector({
-  currentUser: selectCurrentUser
+  currentUser: selectCurrentUser,
 });
 
 const withConnect = connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 );
 
 export default withConnect;

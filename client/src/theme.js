@@ -6,14 +6,14 @@ const theme = createMuiTheme({
       light: '#ae52d4',
       main: '#7b1fa2',
       dark: '#4a0072',
-      contrastText: '#fff'
+      contrastText: '#fff',
     },
     secondary: {
       light: '#ff5c8d',
       main: '#d81b60',
       dark: '#a00037',
-      contrastText: '#fff'
-    }
+      contrastText: '#fff',
+    },
   },
   typography: {
     fontFamily: [
@@ -21,22 +21,22 @@ const theme = createMuiTheme({
       '"Helvetica Neue"',
       'Helvetica',
       'Arial',
-      'sans-serif'
-    ].join(',')
+      'sans-serif',
+    ].join(','),
   },
   overrides: {
     MuiTableCell: {
       root: {
-        padding: '4px 36px 4px 24px'
+        padding: '0.5rem',
       },
       body: {
-        fontSize: 16
+        fontSize: '0.9rem',
       },
       header: {
-        fontSize: 16
-      }
-    }
-  }
+        fontSize: '1rem',
+      },
+    },
+  },
 });
 
 export default theme;

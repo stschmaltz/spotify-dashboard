@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import qs from 'query-string';
-import { Grid, withStyles } from '@material-ui/core';
+import { withStyles } from '@material-ui/core';
 import { compose, pure } from 'recompose';
 import withConnect from './withConnect';
 import DashboardMainContent from '../dashboard-main-content';
 import DashboardHeader from '../dashboard-header';
 import { style } from './style';
-import DashboardSideBar from '../dashboard-side-bar/DashboardSideBar';
 
 class Dashboard extends Component {
   constructor(props) {
@@ -20,7 +19,7 @@ class Dashboard extends Component {
       saveAccessToken(accessToken);
     }
     this.state = {
-      loggedIn: !!accessToken
+      loggedIn: !!accessToken,
     };
   }
 
@@ -29,23 +28,14 @@ class Dashboard extends Component {
 
     return (
       <div className="Dashboard">
-        <DashboardSideBar />
-        <div
-          style={{
-            position: 'relative',
-            float: 'right',
-            width: '80%'
-          }}
-        >
+        <div>
           <DashboardHeader />
           {!loggedIn && (
             <a href="http://localhost:8888">Log Into Spotify on the Server</a>
           )}
           {loggedIn && (
             <div>
-              <Grid>
-                <DashboardMainContent />
-              </Grid>
+              <DashboardMainContent />
             </div>
           )}
         </div>
@@ -57,5 +47,5 @@ class Dashboard extends Component {
 export default compose(
   pure,
   withStyles(style),
-  withConnect
+  withConnect,
 )(Dashboard);

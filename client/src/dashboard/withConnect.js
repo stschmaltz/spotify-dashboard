@@ -5,10 +5,8 @@ import {
   doGetMyTopSongsRequest,
   selectMyTopSongsLong,
   selectMyTopSongsMed,
-  selectMyTopSongsShort
+  selectMyTopSongsShort,
 } from '../user-favourites/duck';
-
-
 
 const mapDispatchToProps = dispatch => ({
   saveAccessToken: accessToken => {
@@ -18,19 +16,19 @@ const mapDispatchToProps = dispatch => ({
     dispatch(doGetMyTopSongsRequest('long_term'));
     dispatch(doGetMyTopSongsRequest('medium_term'));
     dispatch(doGetMyTopSongsRequest('short_term'));
-  }
+  },
 });
 
 const mapStateToProps = createStructuredSelector({
   accessToken: selectAccessToken,
   myTopSongsLong: selectMyTopSongsLong,
   myTopSongsMed: selectMyTopSongsMed,
-  myTopSongsShort: selectMyTopSongsShort
+  myTopSongsShort: selectMyTopSongsShort,
 });
 
 const withConnect = connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 );
 
 export default withConnect;

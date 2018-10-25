@@ -1,6 +1,6 @@
 export const style = {
   header: {
     // padding: 30,
-    fontSize: 40
-  }
+    fontSize: 40,
+  },
 };

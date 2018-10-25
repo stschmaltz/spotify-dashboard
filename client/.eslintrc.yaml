@@ -1,9 +1,9 @@
 parser: babel-eslint
 
 extends:
-- airbnb
-- plugin:prettier/recommended
-- prettier/react
+  - airbnb
+  - plugin:prettier/recommended
+  - prettier/react
 
 env:
   browser: true
@@ -12,48 +12,49 @@ env:
   es6: true
 
 plugins:
-- redux-saga
-- react
-- jsx-a11y
+  - redux-saga
+  - react
+  - jsx-a11y
 
 parserOptions:
   ecmaVersion: 7
   sourceType: module
   ecmaFeatures:
     jsx: true
-    
+
 settings:
   import/resolver:
     webpack:
-      config: "./internals/webpack/webpack.prod.babel.js"
+      config: './internals/webpack/webpack.prod.babel.js'
 
 overrides:
-- files:
-  - "*.test.js"
-  rules:
-    max-nested-callbacks: 'off'
-    max-statements: 'off'
+  - files:
+      - '*.test.js'
+    rules:
+      max-nested-callbacks: 'off'
+      max-statements: 'off'
 
 rules:
   prettier/prettier:
-  - error
-  - singleQuote: true
-  
+    - error
+    - trailingComma: all
+      singleQuote: true
+
   max-lines:
-  - warn
-  - 300
+    - warn
+    - 300
   max-depth:
-  - warn
-  - 2
+    - warn
+    - 2
   max-params:
-  - error
-  - 3
+    - error
+    - 3
   max-nested-callbacks:
-  - error
-  - 3
+    - error
+    - 3
   complexity:
-  - off
-  - 6
+    - off
+    - 6
   no-else-return: 2
   no-lonely-if: 2
   no-plusplus: 0
@@ -63,9 +64,9 @@ rules:
   no-confusing-arrow: 0
   no-console: 1
   no-restricted-imports:
-  - error
-  - patterns:
-    - "**/../core/**"
+    - error
+    - patterns:
+        - '**/../core/**'
   no-duplicate-imports: 2
   no-unused-vars: 2
   no-use-before-define: 0
@@ -77,36 +78,36 @@ rules:
   prefer-destructuring: 2
   prefer-spread: 2
   prefer-arrow-callback: 2
-  
+
   padding-line-between-statements:
-  - error
-  - blankLine: always
-    prev:
-    - const
-    - let
-    - var
-    - import
-    next: "*"
-  - blankLine: any
-    prev:
-    - const
-    - let
-    - var
-    - import
-    next:
-    - const
-    - let
-    - var
-    - import
-  - blankLine: always
-    prev: directive
-    next: "*"
-  - blankLine: any
-    prev: directive
-    next: directive
-  - blankLine: always
-    prev: "*"
-    next: return
+    - error
+    - blankLine: always
+      prev:
+        - const
+        - let
+        - var
+        - import
+      next: '*'
+    - blankLine: any
+      prev:
+        - const
+        - let
+        - var
+        - import
+      next:
+        - const
+        - let
+        - var
+        - import
+    - blankLine: always
+      prev: directive
+      next: '*'
+    - blankLine: any
+      prev: directive
+      next: directive
+    - blankLine: always
+      prev: '*'
+      next: return
 
   import/no-named-as-default: 0
   import/no-dynamic-require: 0
@@ -134,11 +135,11 @@ rules:
   jsx-a11y/aria-props: 2
   jsx-a11y/heading-has-content: 0
   jsx-a11y/anchor-is-valid:
-  - error
-  - components:
-    - Link
-    specialLink:
-    - to
+    - error
+    - components:
+        - Link
+      specialLink:
+        - to
   jsx-a11y/label-has-for: 2
   jsx-a11y/no-href: 0
   jsx-a11y/mouse-events-have-key-events: 2
@@ -149,7 +150,7 @@ rules:
   react/jsx-no-target-blank: 0
 
   react/prefer-stateless-function: 2
-  react/forbid-prop-types: 0  
+  react/forbid-prop-types: 0
   react/require-default-props: 0
   react/require-extension: 0
   react/self-closing-comp: 0

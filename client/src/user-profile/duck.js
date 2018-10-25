@@ -9,32 +9,32 @@ export const GET_MY_USER_PROFILE_ERROR =
   'user-profile/GET_MY_USER_PROFILE_ERROR';
 
 export const doGetMyUserProfileRequest = () => ({
-  type: GET_MY_USER_PROFILE_REQUEST
+  type: GET_MY_USER_PROFILE_REQUEST,
 });
 export const doGetMyUserProfileError = () => ({
-  type: GET_MY_USER_PROFILE_ERROR
+  type: GET_MY_USER_PROFILE_ERROR,
 });
 export const doGetMyUserProfileSuccess = myUserProfile => ({
   type: GET_MY_USER_PROFILE_SUCCESS,
-  myUserProfile
+  myUserProfile,
 });
 
 export const selectUserProfile = state => state.get('userProfile');
 
 export const selectCurrentUser = createSelector(selectUserProfile, profile =>
-  profile.get('currentUser')
+  profile.get('currentUser'),
 );
 
 export const selectCurrentUsername = createSelector(
   selectUserProfile,
-  profile => profile.get('currentUser').display_name
+  profile => profile.get('currentUser').display_name,
 );
 
 const initialState = fromJS({
   error: false,
   currentUser: {
-    display_name: null
-  }
+    display_name: null,
+  },
 });
 
 const userProfileReducer = (state = initialState, action) => {

@@ -8,11 +8,11 @@ import withConnect from './withConnect';
 export const style = {
   avatar: {
     height: '10em',
-    width: '10em'
+    width: '10em',
   },
   drawerPaper: {
     background: 'linear-gradient(60deg, #ab47bc, #8e24aa)',
-    maxWidth: '300'
+    maxWidth: '300',
   },
   sideBarWrapper: {
     overflow: 'hidden',
@@ -27,37 +27,37 @@ export const style = {
     position: 'relative',
     height: '100vh',
     overflow: 'hidden',
-    // zIndex: "4",
+    boxShadow: '1px 1px 3px 0px rgba(0,0,0,0.51)',
     overflowScrolling: 'touch',
     backgroundColor: 'rgb(255, 255, 255, 0.7)',
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'center'
+    alignItems: 'center',
+    width: '100%',
   },
   userNameHeadline: {
     fontSize: '2.5em',
-    color: 'white',
-    margin: '0.7em'
-  }
+    // color: 'white',
+    margin: '0.7em',
+  },
 };
 
 const DashboardSideBar = ({ classes, currentUser }) => {
   const userName = currentUser ? currentUser.display_name : '';
-  console.log('*******', currentUser.images)
   const userImage = currentUser.images ? currentUser.images[0].url : '';
 
   return (
     <div style={{ width: 450 }}>
       <Drawer
         classes={{
-          paper: classes.drawerPaper
+          paper: classes.drawerPaper,
         }}
         variant="permanent"
         anchor="left"
         open
       >
         <div className={classes.sideBarWrapper}>
-          <Paper style={{}} className={classes.paper}>
+          <Paper style={{ width: '100%' }} className={classes.paper}>
             <Avatar className={classes.avatar}>
               {<img src={userImage} alt={userName} />}
             </Avatar>
@@ -74,5 +74,5 @@ const DashboardSideBar = ({ classes, currentUser }) => {
 export default compose(
   pure,
   withConnect,
-  withStyles(style)
+  withStyles(style),
 )(DashboardSideBar);

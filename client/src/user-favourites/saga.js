@@ -4,7 +4,7 @@ import {
   GET_MY_TOP_SONGS_REQUEST,
   GET_MY_TOP_ARTISTS_REQUEST,
   doGetMyTopSongsSuccess,
-  doGetMyTopArtistsSuccess
+  doGetMyTopArtistsSuccess,
 } from './duck';
 import { selectAccessToken } from '../auth/duck';
 
@@ -21,12 +21,12 @@ export function* handleGetMyTopSongsRequest(action) {
   yield put(doGetMyTopSongsSuccess(topSongs, action.timeRange));
 }
 const mapTopSongs = topSongs => {
-  const songs = [...topSongs].slice(0, 5);
+  const songs = [...topSongs]; //.slice(0, 5);
 
   return songs.map(song => ({
     song: song.name,
     artist: joinArtistsToString(song.artists),
-    album: song.album.name
+    album: song.album.name,
   }));
 };
 const joinArtistsToString = artists =>
@@ -49,7 +49,7 @@ const mapTopArtists = topArtists => {
 
   return artists.map(artist => ({
     name: artist.name,
-    image: artist.images[0].url
+    image: artist.images[0].url,
   }));
 };
 

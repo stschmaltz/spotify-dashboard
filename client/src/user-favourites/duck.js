@@ -13,21 +13,21 @@ export const GET_MY_TOP_ARTISTS_SUCCESS =
 
 export const doGetMyTopArtistsRequest = timeRange => ({
   type: GET_MY_TOP_ARTISTS_REQUEST,
-  timeRange
+  timeRange,
 });
 
 export const doGetMyTopArtistsError = () => ({
-  type: GET_MY_TOP_ARTISTS_ERROR
+  type: GET_MY_TOP_ARTISTS_ERROR,
 });
 
 export const doGetMyTopArtistsSuccess = myTopArtists => ({
   type: GET_MY_TOP_ARTISTS_SUCCESS,
-  myTopArtists
+  myTopArtists,
 });
 
 export const selectMyTopArtists = createSelector(
   selectUserFavourites,
-  userFavourites => userFavourites.get('myTopArtists')
+  userFavourites => userFavourites.get('myTopArtists'),
 );
 
 // ***** Songs *****
@@ -43,11 +43,11 @@ export const GET_MY_TOP_SONGS_SUCCESS_MEDIUM =
 
 export const doGetMyTopSongsRequest = timeRange => ({
   type: GET_MY_TOP_SONGS_REQUEST,
-  timeRange
+  timeRange,
 });
 
 export const doGetMyTopSongsError = () => ({
-  type: GET_MY_TOP_SONGS_ERROR
+  type: GET_MY_TOP_SONGS_ERROR,
 });
 
 export const doGetMyTopSongsSuccess = (myTopSongs, timeRange) => {
@@ -60,23 +60,23 @@ export const doGetMyTopSongsSuccess = (myTopSongs, timeRange) => {
 
   return {
     type,
-    myTopSongs
+    myTopSongs,
   };
 };
 
 export const selectMyTopSongsLong = createSelector(
   selectUserFavourites,
-  userFavourites => userFavourites.get('myTopSongsLong')
+  userFavourites => userFavourites.get('myTopSongsLong'),
 );
 
 export const selectMyTopSongsMed = createSelector(
   selectUserFavourites,
-  userFavourites => userFavourites.get('myTopSongsMed')
+  userFavourites => userFavourites.get('myTopSongsMed'),
 );
 
 export const selectMyTopSongsShort = createSelector(
   selectUserFavourites,
-  userFavourites => userFavourites.get('myTopSongsShort')
+  userFavourites => userFavourites.get('myTopSongsShort'),
 );
 
 const initialState = fromJS({
@@ -84,7 +84,7 @@ const initialState = fromJS({
   myTopSongsMed: [],
   myTopSongsShort: [],
   myTopArtists: [],
-  error: false
+  error: false,
 });
 
 // ***** Reducer *****

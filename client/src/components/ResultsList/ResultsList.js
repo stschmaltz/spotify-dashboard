@@ -6,7 +6,7 @@ import {
   Table,
   TableCell,
   TableRow,
-  TableBody
+  TableBody,
 } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import { style } from './style';
@@ -17,7 +17,7 @@ const ResultsList = ({
   listDataFunction,
   listHeaders,
   classes,
-  headerColor = 'Red'
+  headerColor = 'Red',
 }) => {
   const headerCells = listHeaders.map(header => (
     <TableCell key={header}>{header}</TableCell>

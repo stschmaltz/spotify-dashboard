@@ -22,7 +22,7 @@ class DashboardContent extends Component {
       myTopSongsLong,
       myTopSongsMed,
       myTopSongsShort,
-      myTopArtists
+      myTopArtists,
     } = this.props;
     const { classes } = this.props;
     // const isMyTopSongs = myTopSongsLong && myTopSongsLong.length > 0;
@@ -69,5 +69,5 @@ class DashboardContent extends Component {
 export default compose(
   pure,
   withStyles(style),
-  withConnect
+  withConnect,
 )(DashboardContent);

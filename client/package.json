@@ -26,6 +26,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "eslint": "./node_modules/.bin/eslint --fix --ignore-path .gitignore .",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
