@@ -31,7 +31,9 @@ class Dashboard extends Component {
         <div>
           <DashboardHeader />
           {!loggedIn && (
-            <a href="http://localhost:8888">Log Into Spotify on the Server</a>
+            <a href="http://localhost:8888/login">
+              Log Into Spotify on the Server
+            </a>
           )}
           {loggedIn && (
             <div>
