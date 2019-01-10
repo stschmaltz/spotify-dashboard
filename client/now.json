@@ -1,0 +1,11 @@
+{
+  "name": "spotify-dashboard-client",
+  "alias": ["spotifydashboard.com", "www.spotifydashboard.com"],
+  "version": 2,
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@now/static-build"
+    }
+  ]
+}

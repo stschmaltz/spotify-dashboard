@@ -4,7 +4,7 @@ import { GridListTileBar, GridListTile } from '@material-ui/core';
 
 // Add media query for width
 export const formatTopArtists = topArtistsData =>
-  topArtistsData.slice(0, 12).map((row, index) => (
+  topArtistsData.map((row, index) => (
     <GridListTile
       key={row.name + row.genres}
       cols={0}

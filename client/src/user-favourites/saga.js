@@ -21,7 +21,7 @@ export function* handleGetMyTopSongsRequest(action) {
   yield put(doGetMyTopSongsSuccess(topSongs, action.timeRange));
 }
 const mapTopSongs = topSongs => {
-  const songs = [...topSongs]; //.slice(0, 5);
+  const songs = [...topSongs]; // .slice(0, 5);
 
   return songs.map(song => ({
     song: song.name,
