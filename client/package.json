@@ -22,18 +22,17 @@
     "redux-immutable": "^4.0.0",
     "redux-logger": "^3.0.6",
     "redux-saga": "^0.16.0",
-    "redux-saga-tester": "^1.0.379",
     "reselect": "^3.0.1",
     "spotify-web-api-js": "^1.1.1"
   },
   "scripts": {
     "start": "react-scripts start",
+    "dev": "react-scripts start",
     "eslint": "./node_modules/.bin/eslint --fix --ignore-path .gitignore .",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "now-build": "react-scripts build && mv build dist",
-    "now-start": ""
+    "now-build": "react-scripts build && mv build dist"
   },
   "devDependencies": {
     "babel-eslint": "^9.0.0",
@@ -54,6 +53,7 @@
     "node-fetch": "^2.1.2",
     "prettier": "^1.14.2",
     "redux-immutable-state-invariant": "^2.1.0",
+    "redux-saga-tester": "^1.0.379",
     "redux-mock-store": "^1.5.3",
     "webpack": "4.19.1",
     "webpack-dev-middleware": "3.5.0",

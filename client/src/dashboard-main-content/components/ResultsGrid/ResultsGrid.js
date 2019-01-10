@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, CardHeader, GridList } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
-import { style } from './style';
+import { styles } from './style';
 
 const ResultsGrid = ({
   listTitle,
@@ -29,4 +29,4 @@ const ResultsGrid = ({
   );
 };
 
-export default withStyles(style)(ResultsGrid);
+export default withStyles(styles)(ResultsGrid);

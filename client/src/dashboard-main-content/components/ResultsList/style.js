@@ -25,10 +25,13 @@ const roseCardHeader = {
     '0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(233, 30, 99, 0.4)',
 };
 
-export const style = {
+export const styles = theme => ({
   root: {
     padding: '0.5rem',
-    maxWidth: '100vw',
+    maxWidth: '450px',
+    [theme.breakpoints.up('lg')]: {
+      maxWidth: '33%',
+    },
   },
   cardHeaderRed: {
     padding: '0.75rem 1.25rem',
@@ -56,7 +59,7 @@ export const style = {
     ...roseCardHeader,
   },
   title: {
-    color: '#FFFFFF',
+    color: theme.palette.white.main,
     marginTop: '0px',
     fontWeight: '300',
     fontFamily: "'Roboto', sans-serif",
@@ -68,4 +71,4 @@ export const style = {
       lineHeight: '1',
     },
   },
-};
+});

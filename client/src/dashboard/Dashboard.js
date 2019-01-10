@@ -6,7 +6,7 @@ import Button from '@material-ui/core/Button';
 import withConnect from './withConnect';
 import DashboardMainContent from '../dashboard-main-content';
 import DashboardHeader from '../dashboard-header';
-import { style } from './style';
+import { styles } from './style';
 
 class Dashboard extends Component {
   constructor(props) {
@@ -26,22 +26,27 @@ class Dashboard extends Component {
 
   render() {
     const { loggedIn } = this.state;
+    const { classes } = this.props;
     const loginEndpoint =
       process.env.NODE_ENV === 'production'
         ? 'https://spotify-dashboard-server.now.sh/login'
         : 'http://localhost:8888/login';
 
     return (
-      <div className="Dashboard">
-        <div>
-          <DashboardHeader />
-          {!loggedIn && <a href={loginEndpoint}>Log Into Spotify</a>}
-          {loggedIn && (
-            <div>
-              <DashboardMainContent />
-            </div>
-          )}
-        </div>
+      <div className={classes.mainContent}>
+        <DashboardHeader />
+        {!loggedIn && (
+          <div className={classes.loginLinkContainer}>
+            <a className={classes.loginLink} href={loginEndpoint}>
+              Click to Log Into Spotify
+            </a>
+          </div>
+        )}
+        {loggedIn && (
+          <div>
+            <DashboardMainContent />
+          </div>
+        )}
       </div>
     );
   }
@@ -49,6 +54,6 @@ class Dashboard extends Component {
 
 export default compose(
   pure,
-  withStyles(style),
+  withStyles(styles),
   withConnect,
 )(Dashboard);

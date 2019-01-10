@@ -9,7 +9,7 @@ import {
   TableBody,
 } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
-import { style } from './style';
+import { styles } from './style';
 
 const ResultsList = ({
   listTitle,
@@ -43,4 +43,4 @@ const ResultsList = ({
   );
 };
 
-export default withStyles(style)(ResultsList);
+export default withStyles(styles)(ResultsList);

@@ -1,12 +1,12 @@
 import React, { Component, Fragment } from 'react';
 import { Grid, GridList, withStyles } from '@material-ui/core';
 import { compose, pure } from 'recompose';
-import ResultsList from '../components/ResultsList/ResultsList';
+import ResultsList from './components/ResultsList/ResultsList';
 import withConnect from './withConnect';
-import { formatTopSongs } from '../user-favourites/song-data-formatter';
-import { formatTopArtists } from '../user-favourites/artist-data-formatter';
+import { renderTopSongsChart } from './components/ResultsList/TopSongsChart';
+import { renderTopArtistGrid } from './components/ResultsGrid/TopArtistsResultsGrid';
 import { style } from './style';
-import ResultsGrid from '../components/ResultsGrid.js/ResultsGrid';
+import ResultsGrid from './components/ResultsGrid';
 
 class DashboardContent extends Component {
   componentDidMount() {
@@ -35,28 +35,28 @@ class DashboardContent extends Component {
               headerColor="Yellow"
               listTitle="Top Songs (All Time)"
               listData={myTopSongsLong}
-              listDataFunction={formatTopSongs}
+              listDataFunction={renderTopSongsChart}
               listHeaders={['Rank', 'Title', 'Artist', 'Album']}
             />
             <ResultsList
               headerColor="Green"
               listTitle="Top Songs (Last Six Months)"
               listData={myTopSongsMed}
-              listDataFunction={formatTopSongs}
+              listDataFunction={renderTopSongsChart}
               listHeaders={['Rank', 'Title', 'Artist', 'Album']}
             />
             <ResultsList
               headerColor="Red"
               listTitle="Top Songs (Last Four Weeks)"
               listData={myTopSongsShort}
-              listDataFunction={formatTopSongs}
+              listDataFunction={renderTopSongsChart}
               listHeaders={['Rank', 'Title', 'Artist', 'Album']}
             />
             <ResultsGrid
               headerColor="Blue"
               listTitle="Top Artists"
               listData={myTopArtists}
-              listDataFunction={formatTopArtists}
+              listDataFunction={renderTopArtistGrid}
               listHeaders={['Rank', 'Image', 'Name']}
             />
           </GridList>
