@@ -32,6 +32,9 @@ export const styles = theme => ({
     [theme.breakpoints.up('lg')]: {
       maxWidth: '33%',
     },
+    [theme.breakpoints.down('sm')]: {
+      maxWidth: '100%',
+    },
   },
   cardHeaderRed: {
     padding: '0.75rem 1.25rem',

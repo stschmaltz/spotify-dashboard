@@ -3,10 +3,12 @@ import qs from 'query-string';
 import { withStyles } from '@material-ui/core';
 import { compose, pure } from 'recompose';
 import Button from '@material-ui/core/Button';
+import ReactGA from 'react-ga';
 import withConnect from './withConnect';
 import DashboardMainContent from '../dashboard-main-content';
 import DashboardHeader from '../dashboard-header';
 import { styles } from './style';
+import { trackPageView } from '../lib/ga';
 
 class Dashboard extends Component {
   constructor(props) {
@@ -22,6 +24,12 @@ class Dashboard extends Component {
     this.state = {
       loggedIn: !!accessToken,
     };
+  }
+
+  componentDidMount() {
+    if (window.location.pathname) {
+      trackPageView(window.location.pathname);
+    }
   }
 
   render() {
